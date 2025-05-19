@@ -16,9 +16,10 @@ public class BaseEnemyAI : MonoBehaviour
     public bool walking, chasing;
     public Transform player;
     private Transform currentDestination;
-    private Vector3 destination;
+    private Vector3 destination, lastHeardPosition;
     private int randNum, randNum2;
     public int destinationAmount;
+    private Coroutine activeChaseRoutine;
 
     private void Start()
     {
@@ -30,6 +31,16 @@ public class BaseEnemyAI : MonoBehaviour
 
     private void Update()
     {
+        // Player is caught logic
+        if (chasing && Vector3.Distance(transform.position, player.position) <= catchDistance)
+        {
+            player.gameObject.SetActive(false);
+            chasing = false;
+            ai.isStopped = true;
+            // TODO Add animation triggers back in
+            // aiAnim.SetTrigger("Idle");
+        }
+
         //if (searching)
         //{
         //    TODO logic that handles how the enemy searches for the player
@@ -77,8 +88,7 @@ public class BaseEnemyAI : MonoBehaviour
             }
         }
     }
-
-    //-------------------------------- Routines --------------------------------
+//-------------------------------- Routines --------------------------------
     // The idle routine for the enemy character
     private IEnumerator StayIdle()
     {
@@ -95,22 +105,56 @@ public class BaseEnemyAI : MonoBehaviour
         ai.isStopped = false;
     }
 
-    // The routine for the enemy to chase the player
-    //private IEnumerator ChaseRoutine()
-    //{
-        // TODO write chase routine
-    //}
+    private IEnumerator ChaseRoutine(Vector3 soundPosition)
+    {
+        chasing = true;
+        walking = false;
+        ai.isStopped = false;
+        ai.speed = chaseSpeed;
+
+        lastHeardPosition = soundPosition;
+        ai.destination = lastHeardPosition;
+
+        // TODO Add animation triggers back in
+        // aiAnim.SetTrigger("Chase");
+
+        while (chasing)
+        {
+            ai.destination = lastHeardPosition;
+            // player is caught
+            if (Vector3.Distance(transform.position, player.position) <= catchDistance)
+            {
+                player.gameObject.SetActive(false);
+                chasing = false;
+                ai.isStopped = true;
+                // TODO Add animation triggers back in
+                // aiAnim.SetTrigger("Idle");
+                yield break;
+            }
+
+            // If the AI reaches the last known sound position, stop chasing
+            if (Vector3.Distance(transform.position, lastHeardPosition) <= ai.stoppingDistance)
+            {
+                chasing = false;
+                walking = true;
+                StartCoroutine(nameof(StayIdle));
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
 
     // The routine that allows the player to escape a death
     //private IEnumerator EscapeRoutine()
     //{
-        // TODO write escape routine
+    // TODO write escape routine
     //}
 
     // The game over routine when a player can no longer escape
     //private IEnumerator DeathRoutine()
     //{
-        // TODO write death routine
+    // TODO write death routine
     //}
 
     // The routine where the enemy listens for and searches for the player
@@ -119,5 +163,19 @@ public class BaseEnemyAI : MonoBehaviour
     //    TODO write search routine
     //}
 
-    
+    //-------------------------------- Helpers --------------------------------
+    public void OnHeardSound(Vector3 soundPosition)
+    {
+        // Update the last heard position
+        lastHeardPosition = soundPosition;
+
+        // Interrupt any existing chase
+        if (!chasing)
+        {
+            chasing = true;
+            walking = false;
+            StopCoroutine(nameof(StayIdle));
+            StartCoroutine(ChaseRoutine(soundPosition));
+        }
+    }
 }

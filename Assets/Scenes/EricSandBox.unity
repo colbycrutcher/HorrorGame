@@ -272,6 +272,11 @@ Transform:
   - {fileID: 1185020338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &460277826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 1493951143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &649505302
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +599,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1973314406}
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1787325178}
@@ -758,10 +766,11 @@ MonoBehaviour:
   - {fileID: 1653064128}
   aiAnim: {fileID: 0}
   walkSpeed: 2
-  chaseSpeed: 4
+  chaseSpeed: 5
   minIdleTime: 2
   maxIdleTime: 10
   idleTime: 0
+  catchDistance: 0
   walking: 0
   chasing: 0
   player: {fileID: 1973314401}
@@ -845,6 +854,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   m_PrefabInstance: {fileID: 1493951143}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1973314406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460277826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27951fd730e39a342ab181909dcdc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseNoiseRadius: 15
+  maxNoiseRadius: 30
+  radiusDecayRate: 2
+  noiseCooldown: 0.1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  intensityMultiplier: 1
+  randomRadiusVariation: 0.2
+  showGizmos: 1
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2061502156
 GameObject:
   m_ObjectHideFlags: 0
