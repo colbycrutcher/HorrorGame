@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 
-// used as reference material
+// used as reference material, huge thanks to Omogonix for the core logic
 // https://www.youtube.com/watch?v=YFhr-pPAkkI 
 
 public class BaseEnemyAI : MonoBehaviour
@@ -12,7 +12,7 @@ public class BaseEnemyAI : MonoBehaviour
     public NavMeshAgent ai;
     public List<Transform> destinations;
     public Animator aiAnim;
-    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime;
+    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance;
     public bool walking, chasing;
     public Transform player;
     private Transform currentDestination;
@@ -23,33 +23,52 @@ public class BaseEnemyAI : MonoBehaviour
     private void Start()
     {
         walking = true;
+        chasing = false;
         randNum = Random.Range(0, destinations.Count + 1);
         currentDestination = destinations[randNum];
     }
 
     private void Update()
     {
+        //if (searching)
+        //{
+        //    TODO logic that handles how the enemy searches for the player
+        //}
+
+        //if (chasing)
+        //{
+        //    destination = player.position;
+        //    ai.destination = destination;
+        //    ai.speed = chaseSpeed;
+        //    if (ai.remainingDistance <= catchDistance)
+        //    {
+        //        player.gameObject.SetActive(false);
+        //        //TODO reset animation triggers here
+
+        //        StartCoroutine(deathRoutine());
+        //        chasing = false;
+        //    }
+        //}
         if (walking)
         {
             destination = currentDestination.position;
             ai.destination = destination;
             ai.speed = walkSpeed;
-
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
                 randNum2 = Random.Range(0, 2);
-
                 if (randNum2 == 0)
                 {
                     randNum = Random.Range(0, destinationAmount);
                     currentDestination = destinations[randNum];
                 }
-
                 if (randNum2 == 1)
                 {
-                    // Add these in when animations are set
+                    // TODO Add these in when animations are set
+                    
                     // aiAnim.ResetTrigger("Walk");
                     // aiAnim.SetTrigger("Idle");
+                    
                     ai.isStopped = true;
                     StopCoroutine(nameof(StayIdle));
                     StartCoroutine(nameof(StayIdle));
@@ -59,6 +78,8 @@ public class BaseEnemyAI : MonoBehaviour
         }
     }
 
+    //-------------------------------- Routines --------------------------------
+    // The idle routine for the enemy character
     private IEnumerator StayIdle()
     {
         idleTime = Random.Range(minIdleTime, maxIdleTime);
@@ -66,9 +87,37 @@ public class BaseEnemyAI : MonoBehaviour
         walking = true;
         randNum = Random.Range(0, destinationAmount);
         currentDestination = destinations[randNum];
-        // Add these back in when animations are set
+        
+        // TODO Add animation triggers back in
         // aiAnim.ResetTrigger("Idle");
         // aiAnim.SetTrigger("Walk");
+        
         ai.isStopped = false;
     }
+
+    // The routine for the enemy to chase the player
+    //private IEnumerator ChaseRoutine()
+    //{
+        // TODO write chase routine
+    //}
+
+    // The routine that allows the player to escape a death
+    //private IEnumerator EscapeRoutine()
+    //{
+        // TODO write escape routine
+    //}
+
+    // The game over routine when a player can no longer escape
+    //private IEnumerator DeathRoutine()
+    //{
+        // TODO write death routine
+    //}
+
+    // The routine where the enemy listens for and searches for the player
+    //private IEnumerator SearchRoutine()
+    //{
+    //    TODO write search routine
+    //}
+
+    
 }
