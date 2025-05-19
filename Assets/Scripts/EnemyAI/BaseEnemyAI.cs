@@ -148,19 +148,25 @@ public class BaseEnemyAI : MonoBehaviour
     // The routine that allows the player to escape a death
     //private IEnumerator EscapeRoutine()
     //{
-    // TODO write escape routine
+    //    TODO write escape routine
     //}
 
     // The game over routine when a player can no longer escape
     //private IEnumerator DeathRoutine()
     //{
-    // TODO write death routine
+    //    TODO write death routine
     //}
 
     // The routine where the enemy listens for and searches for the player
     //private IEnumerator SearchRoutine()
     //{
     //    TODO write search routine
+    //}
+
+    // The routine where the enemy hears a sound under a threshold and listens for confirmation
+    //private IEnumerator ListeningRoutine()
+    //{
+    //    TODO write listening routing
     //}
 
     //-------------------------------- Helpers --------------------------------
