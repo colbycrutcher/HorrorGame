@@ -766,13 +766,14 @@ MonoBehaviour:
   - {fileID: 1653064128}
   aiAnim: {fileID: 0}
   walkSpeed: 2
-  chaseSpeed: 5
+  chaseSpeed: 6
   minIdleTime: 2
   maxIdleTime: 10
   idleTime: 0
   catchDistance: 0
   walking: 0
   chasing: 0
+  listening: 0
   player: {fileID: 1973314401}
   destinationAmount: 6
 --- !u!65 &1863745130

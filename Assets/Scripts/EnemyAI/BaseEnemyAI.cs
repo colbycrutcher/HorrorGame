@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using Vector3 = UnityEngine.Vector3;
 
 // used as reference material, huge thanks to Omogonix for the core logic
 // https://www.youtube.com/watch?v=YFhr-pPAkkI 
+
+// Usage:
+// Attach to an enemy object. Set Destinations and adjust
 
 public class BaseEnemyAI : MonoBehaviour
 {
@@ -13,13 +18,13 @@ public class BaseEnemyAI : MonoBehaviour
     public List<Transform> destinations;
     public Animator aiAnim;
     public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance;
-    public bool walking, chasing;
+    public bool walking, chasing, listening;
     public Transform player;
     private Transform currentDestination;
     private Vector3 destination, lastHeardPosition;
     private int randNum, randNum2;
     public int destinationAmount;
-    private Coroutine activeChaseRoutine;
+    private Coroutine activeRoutine;
 
     private void Start()
     {
@@ -105,22 +110,40 @@ public class BaseEnemyAI : MonoBehaviour
         ai.isStopped = false;
     }
 
-    private IEnumerator ChaseRoutine(Vector3 soundPosition)
+    private IEnumerator ChaseRoutine(Vector3 initialSoundPosition)
     {
         chasing = true;
         walking = false;
         ai.isStopped = false;
         ai.speed = chaseSpeed;
 
-        lastHeardPosition = soundPosition;
+        lastHeardPosition = initialSoundPosition;
         ai.destination = lastHeardPosition;
+        Vector3 previousPlayerPosition = player.position;
+        Vector3 lastKnownPlayerDirection = (player.position - transform.position).normalized;
 
         // TODO Add animation triggers back in
         // aiAnim.SetTrigger("Chase");
 
+        Debug.Log("AI started chasing towards " + lastHeardPosition);
+
         while (chasing)
         {
-            ai.destination = lastHeardPosition;
+            // Calculate player trajectory
+            Vector3 playerMovement = player.position - previousPlayerPosition;
+            previousPlayerPosition = player.position;
+
+            // Bias the chase towards the player's current movement
+            Vector3 predictiveOffset = playerMovement.normalized * 5f;
+            Vector3 pursuitPoint = player.position + predictiveOffset;
+
+            // Add some randomness
+            Vector3 randomOffset = Random.insideUnitSphere * 2f;
+            randomOffset.y = 0;
+            pursuitPoint += randomOffset;
+
+            ai.destination = pursuitPoint;
+
             // player is caught
             if (Vector3.Distance(transform.position, player.position) <= catchDistance)
             {
@@ -129,6 +152,7 @@ public class BaseEnemyAI : MonoBehaviour
                 ai.isStopped = true;
                 // TODO Add animation triggers back in
                 // aiAnim.SetTrigger("Idle");
+                Debug.Log("AI caught player. Returning to idle.");
                 yield break;
             }
 
@@ -137,6 +161,7 @@ public class BaseEnemyAI : MonoBehaviour
             {
                 chasing = false;
                 walking = true;
+                Debug.Log("AI reached last known sound position. Returning to patrol.");
                 StartCoroutine(nameof(StayIdle));
                 yield break;
             }
@@ -163,25 +188,77 @@ public class BaseEnemyAI : MonoBehaviour
     //    TODO write search routine
     //}
 
-    // The routine where the enemy hears a sound under a threshold and listens for confirmation
-    //private IEnumerator ListeningRoutine()
-    //{
-    //    TODO write listening routing
-    //}
+    //The routine where the enemy hears a sound under a threshold and listens for confirmation
+    private IEnumerator ListenRoutine()
+    {
+        Debug.Log("AI is listening...");
+        // Give player some time to stop moving before listening begins
+        yield return new WaitForSeconds(0.6f);
+
+        ai.isStopped = true;
+        float listenDuration = Random.Range(minIdleTime, maxIdleTime);
+        float elapsedTime = 0f;
+
+        // TODO Add animation triggers back in
+        // aiAnim.SetTrigger("Listen");
+
+        Vector3 initialHeardPosition = lastHeardPosition;
+        bool noiseConfirmed = false;
+
+        while (elapsedTime < listenDuration)
+        {
+            // Check to confirm if noise source has moved significantly
+            if (Vector3.Distance(initialHeardPosition, lastHeardPosition) > 0.5f)
+            {
+                Debug.Log("AI has confirmed noise... Switching to chase.");
+                noiseConfirmed = true;
+                break;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        listening = false;
+        if (noiseConfirmed)
+        {
+            chasing = true;
+            walking = false;
+            Debug.Log("AI is chasing sound at " + lastHeardPosition);
+            activeRoutine = StartCoroutine(ChaseRoutine(lastHeardPosition));
+        }
+        else
+        {
+            walking = true;
+            Debug.Log("AI no longer is interested in the noise. Returning to patrol routine.");
+            activeRoutine = StartCoroutine(nameof(StayIdle));
+        }
+    }
 
     //-------------------------------- Helpers --------------------------------
     public void OnHeardSound(Vector3 soundPosition)
     {
+        if (listening)
+        {
+            lastHeardPosition = soundPosition;
+            Debug.Log("AI already listening, updated sound position to: " + lastHeardPosition);
+            return;
+        }
+
         // Update the last heard position
         lastHeardPosition = soundPosition;
+        chasing = false;
+        walking = false;
+        listening = true;
 
         // Interrupt any existing chase
-        if (!chasing)
+        if (activeRoutine != null)
         {
-            chasing = true;
-            walking = false;
-            StopCoroutine(nameof(StayIdle));
-            StartCoroutine(ChaseRoutine(soundPosition));
+            StopCoroutine(activeRoutine);
+            Debug.Log("AI stopped active routine from OnHeardSound.");
         }
+
+        Debug.Log("AI is entering into listening state from OnHeardSound");
+        activeRoutine = StartCoroutine(ListenRoutine());
     }
 }
