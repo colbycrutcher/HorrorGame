@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2954f57b235ac094a8f5d1dd10aa0d3b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Prefabs/ThirdPersonCharacter.prefab
+  uploadId: 698931

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aece75efe4abf254b90cafc22c212425
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Documentation.pdf
+  uploadId: 698931

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 798cb453fbb670a4fb7f1f37f77585bf
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Mesh/ProjectileCurves/Shaders/DashLine.shader
+  uploadId: 698931

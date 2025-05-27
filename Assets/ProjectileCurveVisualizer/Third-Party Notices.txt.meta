@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bab83ce3c943efa4ba62e867cdf41fc4
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Third-Party Notices.txt
+  uploadId: 698931

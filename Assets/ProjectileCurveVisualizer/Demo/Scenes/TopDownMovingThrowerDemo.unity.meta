@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7b64dc262ef498648b15c1e1c964247a
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scenes/TopDownMovingThrowerDemo.unity
+  uploadId: 698931

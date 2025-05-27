@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: df7bee44235dd434a867add935a02ed9
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Mesh/ProjectileCurves/Shaders/MobileTranslucent.shader
+  uploadId: 698931
