@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8aead91260f34354eb1513bc50c7fea9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scripts/ThirdPersonJumpingCharacter.cs
+  uploadId: 698931

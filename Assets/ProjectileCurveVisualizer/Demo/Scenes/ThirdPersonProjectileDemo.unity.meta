@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6f3dd06b3b0e3f74ca6fcaabdbdfbc73
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scenes/ThirdPersonProjectileDemo.unity
+  uploadId: 698931

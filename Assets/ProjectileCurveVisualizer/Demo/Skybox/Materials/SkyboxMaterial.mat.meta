@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0eba19b93c5c308408fb13c64137aedd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Skybox/Materials/SkyboxMaterial.mat
+  uploadId: 698931

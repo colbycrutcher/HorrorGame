@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: edf45e7cfe5cd534b98bfa1695293a68
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scenes/TrampolineDemo.unity
+  uploadId: 698931

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9394ffd1789d47e4681dcf7d8603b54e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Prefabs/ThirdPersonJumpingCharacter.prefab
+  uploadId: 698931

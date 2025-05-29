@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a2bd80f6e73c5a449b4286aea90acc70
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Mesh/Environment/Materials/PlatformMaterial.mat
+  uploadId: 698931
