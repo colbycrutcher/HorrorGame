@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e9577f737e72193469b519c8f7b9c2e7
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scenes/TopDownPaperBallFightDemo.unity
+  uploadId: 698931

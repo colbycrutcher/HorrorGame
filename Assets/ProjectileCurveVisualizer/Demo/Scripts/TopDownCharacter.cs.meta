@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: abd034cce0612f04a989a84f0cdf9d0d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Scripts/TopDownCharacter.cs
+  uploadId: 698931

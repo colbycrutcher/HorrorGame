@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a2ac1c4d0877efd42bccfc76f5d839fa
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Prefabs/ProjectileCurveVisualizer.prefab
+  uploadId: 698931

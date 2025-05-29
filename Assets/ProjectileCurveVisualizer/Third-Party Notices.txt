@@ -1,0 +1,3 @@
+The following assets are under CC0 license(public domain):
+
+-Skybox(SkyboxMaterial.mat, location: Assets\ProjectileCurveVisualizer\Demo\Skybox\Materials): CC0 license(https://opengameart.org/content/clouds-skybox-1)

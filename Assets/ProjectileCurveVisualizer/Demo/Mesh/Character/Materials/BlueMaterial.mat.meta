@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 788f27efa5cf7a94d9f535ca0065ed40
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Mesh/Character/Materials/BlueMaterial.mat
+  uploadId: 698931

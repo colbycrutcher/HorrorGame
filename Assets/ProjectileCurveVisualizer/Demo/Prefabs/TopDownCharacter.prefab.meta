@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ed9e5017ebed3bf4d9f1b09ff69000a3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 253878
+  packageName: Projectile Curve Visualizer
+  packageVersion: 1.0.0
+  assetPath: Assets/ProjectileCurveVisualizer/Demo/Prefabs/TopDownCharacter.prefab
+  uploadId: 698931
