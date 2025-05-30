@@ -727,11 +727,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &907479817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3484135728469969136, guid: 8440ee49608ac2d46b8ee2749740384b, type: 3}
-  m_PrefabInstance: {fileID: 1420364383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &996451629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -859,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileCurveVisualizer: {fileID: 2105250545}
-  projectilePrefab: {fileID: 907479817}
+  projectilePrefab: {fileID: 1312860517606149155, guid: 26e159ffaa3e05d4594b82c223fb07e4, type: 3}
   launchSpeed: 10
 --- !u!1 &1382971240
 GameObject:
