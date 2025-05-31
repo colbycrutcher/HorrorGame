@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -43,7 +45,17 @@ namespace StarterAssets
 		[Tooltip("What layers the character uses as ground")]
 		public LayerMask GroundLayers;
 
-		[Header("Cinemachine")]
+        [Header("Audio")]
+        public AudioSource audioSource;
+        public AudioClip walkClip;
+        public AudioClip jumpClip;
+
+        [Tooltip("Minimum time between walk sound steps")]
+        public float walkStepInterval = 0.5f;
+        private float walkStepTimer = 0f;
+
+
+        [Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
 		public GameObject CinemachineCameraTarget;
 		[Tooltip("How far in degrees can you move the camera up")]
@@ -59,9 +71,11 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+        private bool _hasJumped = false;
 
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
+
+        // timeout deltatime
+        private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 	
@@ -115,9 +129,11 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-		}
+            HandleWalkSound();
 
-		private void LateUpdate()
+        }
+
+        private void LateUpdate()
 		{
 			CameraRotation();
 		}
@@ -204,22 +220,31 @@ namespace StarterAssets
 			{
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
+                _hasJumped = false; // Allow jump sound again on next jump
 
-				// stop our velocity dropping infinitely when grounded
-				if (_verticalVelocity < 0.0f)
+
+                // stop our velocity dropping infinitely when grounded
+                if (_verticalVelocity < 0.0f)
 				{
 					_verticalVelocity = -2f;
 				}
 
-				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-				{
-					// the square root of H * -2 * G = how much velocity needed to reach desired height
-					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-				}
+                // Jump
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && !_hasJumped)
+                {
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-				// jump timeout
-				if (_jumpTimeoutDelta >= 0.0f)
+                    if (audioSource != null && jumpClip != null)
+                    {
+                        audioSource.PlayOneShot(jumpClip);
+                    }
+
+                    _hasJumped = true; // Mark jump as triggered
+                }
+
+
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
 				{
 					_jumpTimeoutDelta -= Time.deltaTime;
 				}
@@ -264,5 +289,27 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-	}
+        private void HandleWalkSound()
+        {
+            // Only play when grounded and moving
+            if (Grounded && _input.move != Vector2.zero && _controller.velocity.magnitude > 0.1f)
+            {
+                walkStepTimer += Time.deltaTime;
+
+                if (walkStepTimer >= walkStepInterval)
+                {
+                    if (audioSource != null && walkClip != null)
+                    {
+                        audioSource.PlayOneShot(walkClip);
+                    }
+                    walkStepTimer = 0f;
+                }
+            }
+            else
+            {
+                walkStepTimer = walkStepInterval; // reset so it doesn't play immediately on resume
+            }
+        }
+
+    }
 }
