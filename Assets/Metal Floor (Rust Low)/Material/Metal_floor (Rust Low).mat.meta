@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 401ad4983cc206c4f923a26dd2542db1
+timeCreated: 1435431392
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 40351
+  packageName: Metal Floor (Rust Low) Texture
+  packageVersion: 1.0
+  assetPath: Assets/Metal Floor (Rust Low)/Material/Metal_floor (Rust Low).mat
+  uploadId: 76561
