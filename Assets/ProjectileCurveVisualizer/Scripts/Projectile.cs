@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ProjectileCurveVisualizerSystem
@@ -6,6 +8,12 @@ namespace ProjectileCurveVisualizerSystem
     {
         public Rigidbody projectileRigidbody;
         public MeshCollider projectileMeshCollider;
+        private SoundEmitter m_SoundEmitter;
+
+        private void Start()
+        {
+            m_SoundEmitter = GetComponent<SoundEmitter>();
+        }
 
         public void Throw(Vector3 velocity)
         {
@@ -13,6 +21,16 @@ namespace ProjectileCurveVisualizerSystem
             projectileRigidbody.useGravity = true;
 
             projectileRigidbody.linearVelocity = velocity;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            Debug.Log("Hit: " + other.gameObject.name);
+            if (m_SoundEmitter != null)
+            {
+                m_SoundEmitter.EmitSound();
+            }
+            // play audio file sound here
         }
     }
 }
