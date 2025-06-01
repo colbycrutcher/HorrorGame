@@ -303,8 +303,12 @@ namespace StarterAssets
                 {
                     if (audioSource != null && walkClip != null)
                     {
+                        if (m_SoundEmitter != null)
+                        {
+                            m_SoundEmitter.EmitSound();
+                        }
                         audioSource.PlayOneShot(walkClip);
-                        m_SoundEmitter.EmitSound();
+                        
                         
                     }
                     walkStepTimer = 0f;
