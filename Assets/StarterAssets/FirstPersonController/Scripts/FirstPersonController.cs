@@ -78,6 +78,8 @@ namespace StarterAssets
         private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+        private SoundEmitter m_SoundEmitter; // sound emitter
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -110,7 +112,8 @@ namespace StarterAssets
 		}
 
 		private void Start()
-		{
+        {
+            m_SoundEmitter = GetComponent<SoundEmitter>(); // get sound emitter component
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -301,6 +304,8 @@ namespace StarterAssets
                     if (audioSource != null && walkClip != null)
                     {
                         audioSource.PlayOneShot(walkClip);
+                        m_SoundEmitter.EmitSound();
+                        
                     }
                     walkStepTimer = 0f;
                 }
