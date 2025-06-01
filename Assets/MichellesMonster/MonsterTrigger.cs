@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class MonsterTrigger : MonoBehaviour
 {
-    public MonsterMover monster; // Drag the monster GameObject here in Inspector
+    public MonsterMover monster;         // Assign in Inspector
+    public AudioSource triggerSound;     // Assign in Inspector (AudioSource component)
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             monster.StartMoving();
-            Destroy(gameObject); // Remove trigger after activation
+
+            if (triggerSound != null)
+                triggerSound.Play();
+
+            Destroy(gameObject, triggerSound.clip.length); // Optional: delay destroy until sound finishes
         }
     }
 }
