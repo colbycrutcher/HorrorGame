@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3391e96c014a90540946fff814f3572c
+timeCreated: 1530925794
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122461
+  packageName: Plastic Barrels
+  packageVersion: 1.0.2
+  assetPath: Assets/Props/Barrels/PlasticBarrels/Prefab/PlasticBarrel_Skin2.prefab
+  uploadId: 732743

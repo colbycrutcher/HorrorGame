@@ -7,7 +7,7 @@ public class StartGameScript : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Scenes/EricSandbox");
+        SceneManager.LoadScene("Scenes/SampleScene");
         Debug.Log("Starting Game");
         //Just to make sure its working?
     }

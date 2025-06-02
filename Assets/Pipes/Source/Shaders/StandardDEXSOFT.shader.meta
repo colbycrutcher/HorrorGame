@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3705912b009d73a449e5196bfd03b1db
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 215079
+  packageName: Free Pipes Collection
+  packageVersion: 1.0
+  assetPath: Assets/Pipes/Source/Shaders/StandardDEXSOFT.shader
+  uploadId: 484512

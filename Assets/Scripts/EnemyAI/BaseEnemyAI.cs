@@ -4,6 +4,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 
 // used as reference material, huge thanks to Omogonix for the core logic
@@ -17,7 +18,7 @@ public class BaseEnemyAI : MonoBehaviour
     public NavMeshAgent ai;
     public List<Transform> destinations;
     public Animator aiAnim;
-    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance;
+    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance, jumpScareTime;
     public bool walking, chasing, listening;
     public Transform player;
     private Transform currentDestination;
@@ -25,6 +26,11 @@ public class BaseEnemyAI : MonoBehaviour
     private int randNum, randNum2;
     public int destinationAmount;
     private Coroutine activeRoutine;
+    public string deathScene;
+
+    //Enum for Animation states
+    private enum AIAnimState { Idle = 0, Walk = 1, Chase = 2, Listen = 3 }
+
 
     private void Start()
     {
@@ -44,6 +50,7 @@ public class BaseEnemyAI : MonoBehaviour
             ai.isStopped = true;
             // TODO Add animation triggers back in
             // aiAnim.SetTrigger("Idle");
+            if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
         }
 
         //if (searching)
@@ -81,10 +88,12 @@ public class BaseEnemyAI : MonoBehaviour
                 if (randNum2 == 1)
                 {
                     // TODO Add these in when animations are set
-                    
+
                     // aiAnim.ResetTrigger("Walk");
                     // aiAnim.SetTrigger("Idle");
-                    
+                    if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
+                    if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Walk);
+
                     ai.isStopped = true;
                     StopCoroutine(nameof(StayIdle));
                     StartCoroutine(nameof(StayIdle));
@@ -102,11 +111,14 @@ public class BaseEnemyAI : MonoBehaviour
         walking = true;
         randNum = Random.Range(0, destinationAmount);
         currentDestination = destinations[randNum];
-        
+
         // TODO Add animation triggers back in
         // aiAnim.ResetTrigger("Idle");
         // aiAnim.SetTrigger("Walk");
-        
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
+
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Walk);
+
         ai.isStopped = false;
     }
 
@@ -124,6 +136,7 @@ public class BaseEnemyAI : MonoBehaviour
 
         // TODO Add animation triggers back in
         // aiAnim.SetTrigger("Chase");
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
 
         Debug.Log("AI started chasing towards " + lastHeardPosition);
 
@@ -152,7 +165,9 @@ public class BaseEnemyAI : MonoBehaviour
                 ai.isStopped = true;
                 // TODO Add animation triggers back in
                 // aiAnim.SetTrigger("Idle");
-                Debug.Log("AI caught player. Returning to idle.");
+                if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
+                Debug.Log("You have Been caught");
+                StartCoroutine(nameof(DeathRoutine));
                 yield break;
             }
 
@@ -177,10 +192,11 @@ public class BaseEnemyAI : MonoBehaviour
     //}
 
     // The game over routine when a player can no longer escape
-    //private IEnumerator DeathRoutine()
-    //{
-    //    TODO write death routine
-    //}
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(jumpScareTime);
+        SceneManager.LoadScene(deathScene);
+    }
 
     // The routine where the enemy listens for and searches for the player
     //private IEnumerator SearchRoutine()
@@ -201,6 +217,7 @@ public class BaseEnemyAI : MonoBehaviour
 
         // TODO Add animation triggers back in
         // aiAnim.SetTrigger("Listen");
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Listen);
 
         Vector3 initialHeardPosition = lastHeardPosition;
         bool noiseConfirmed = false;
