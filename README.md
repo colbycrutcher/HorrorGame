@@ -2,7 +2,11 @@
 
 ## 🎮 Title: Static Tide
 
-**Static Tide** is a survival-adventure game where you play as a sailor caught in a storm during a mysterious toxic waste dumping mission. Hired by an eccentric billionaire, your goal was to dump hazardous materials far into the ocean, away from prying eyes. But things have gone wrong.
+**Static Tide** is a survival-adventure game where you play as a sailor caught in a storm during a mysterious toxic waste dumping mission. Hired by an eccentric billionaire, your goal was to dispose of hazardous materials far into the ocean, away from prying eyes.
+
+But something doesn’t feel right.
+
+Before the storm hit, there were whispers among the crew — rumors that this mission wasn’t just about dumping waste. Some believed the barrels contained something far more dangerous... possibly **explosive**. Tensions were high, and unease spread as the ship pushed deeper into open water.
 
 After a violent storm knocks you unconscious, you awaken to find the crew gone — and something else left behind. Trapped and alone, your only chance of escape lies in locating three keys — red, green, and blue — which unlock the door to a hidden exit, possibly left by the fleeing crew.
 
