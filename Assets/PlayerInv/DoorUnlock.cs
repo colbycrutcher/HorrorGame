@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI; // or TMPro
 using UnityEngine.Video; // required for VideoPlayer
+using UnityEngine.SceneManagement;
 
 
 public class DoorUnlock : MonoBehaviour, IInteractable
@@ -14,7 +15,7 @@ public class DoorUnlock : MonoBehaviour, IInteractable
     public VideoPlayer videoPlayer;  // 🔁 Assign the VideoPlayer component
    
     public GameObject exitVideoPrompt;      // The "Press ESC to exit" UI
-    private bool isVideoPlaying = false;
+    private bool isVideoReadyToExit = false; // replaces isVideoPlaying
 
 
     public Text lockedMessageText;
@@ -44,9 +45,15 @@ public class DoorUnlock : MonoBehaviour, IInteractable
             // ✅ Trigger video
             if (videoOverlay != null && videoPlayer != null)
             {
-                videoOverlay.SetActive(true);   // show the fullscreen RawImage
-                videoPlayer.Play();             // play the video
+                videoOverlay.SetActive(true);
+                videoPlayer.Play();
+
+                // Only trigger once
+                videoPlayer.loopPointReached -= OnVideoEnd;
+                videoPlayer.loopPointReached += OnVideoEnd;
             }
+
+
         }
         else
         {
@@ -58,6 +65,15 @@ public class DoorUnlock : MonoBehaviour, IInteractable
             if (!isMessageShowing && lockedMessageText != null)
                 ShowLockedMessage("The door is locked.");
         }
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        Debug.Log("Video ended, waiting for E to exit...");
+        isVideoReadyToExit = true;
+
+        if (exitVideoPrompt != null)
+            exitVideoPrompt.SetActive(true);
     }
 
 
@@ -79,4 +95,19 @@ public class DoorUnlock : MonoBehaviour, IInteractable
     {
         return "Unlock Door";
     }
+
+    void Update()
+    {
+        if (isVideoReadyToExit && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("E pressed — loading MainMenuScene...");
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainMenuScene");
+        }
+    }
+
+
+
+
+
 }
