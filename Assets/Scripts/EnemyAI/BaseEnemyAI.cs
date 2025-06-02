@@ -147,15 +147,15 @@ public class BaseEnemyAI : MonoBehaviour
             previousPlayerPosition = player.position;
 
             // Bias the chase towards the player's current movement
-            Vector3 predictiveOffset = playerMovement.normalized * 5f;
-            Vector3 pursuitPoint = player.position + predictiveOffset;
+            //Vector3 predictiveOffset = playerMovement.normalized * 5f;
+            //Vector3 pursuitPoint = player.position + predictiveOffset;
 
             // Add some randomness
             Vector3 randomOffset = Random.insideUnitSphere * 2f;
             randomOffset.y = 0;
-            pursuitPoint += randomOffset;
+            //pursuitPoint += randomOffset;
 
-            ai.destination = pursuitPoint;
+            //ai.destination = pursuitPoint;
 
             // player is caught
             if (Vector3.Distance(transform.position, player.position) <= catchDistance)

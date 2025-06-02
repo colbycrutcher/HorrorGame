@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.062373493, y: 0.009281094, z: 0.062373493}
-  m_Center: {x: 0, y: 0.004640545, z: 0}
+  m_Size: {x: 0.0623735, y: 0.028321821, z: 0.0623735}
+  m_Center: {x: 0, y: 0.0012970282, z: 0}
 --- !u!54 &6138292801292684044
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   noiseCooldown: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   intensityMultiplier: 1
   randomRadiusVariation: 0.2
   showGizmos: 1

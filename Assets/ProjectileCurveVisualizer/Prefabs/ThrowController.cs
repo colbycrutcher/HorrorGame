@@ -57,7 +57,8 @@ public class ThrowController : MonoBehaviour
         if (projectilePrefab != null)
         {
             var projectile = Instantiate(projectilePrefab);
-            projectile.transform.position = updatedProjectileStartPosition;
+            Vector3 offset = transform.forward * 0.7f + Vector3.up * 0.5f; // 1.2m forward, 1.5m up
+            projectile.transform.position = updatedProjectileStartPosition + offset;
 
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
