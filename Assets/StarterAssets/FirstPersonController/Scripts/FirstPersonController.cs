@@ -48,6 +48,7 @@ namespace StarterAssets
         [Header("Audio")]
         public AudioSource audioSource;
         public AudioClip walkClip;
+        public AudioClip walkClip2;
         public AudioClip jumpClip;
 
         [Tooltip("Minimum time between walk sound steps")]
@@ -72,6 +73,7 @@ namespace StarterAssets
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
         private bool _hasJumped = false;
+        private int walkCount = 0;
 
 
         // timeout deltatime
@@ -307,9 +309,17 @@ namespace StarterAssets
                         {
                             m_SoundEmitter.EmitSound();
                         }
-                        audioSource.PlayOneShot(walkClip);
-                        
-                        
+
+                        if (walkCount == 0)
+                        {
+                            audioSource.PlayOneShot(walkClip);
+                            walkCount = 1;
+                        }
+                        else
+                        {
+							audioSource.PlayOneShot((walkClip2));
+							walkCount = 0;
+                        }
                     }
                     walkStepTimer = 0f;
                 }

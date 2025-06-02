@@ -49562,10 +49562,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3143563231055655434, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2109673923}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
 --- !u!1 &1156140513
 GameObject:
@@ -86434,7 +86431,11 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: walkClip
       value: 
-      objectReference: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+      objectReference: {fileID: 8300000, guid: 27aa8ad9b4159604f951aaf10bbadfb2, type: 3}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: walkClip2
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ce085728210b7e458511496f7f4e41d, type: 3}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: audioSource
       value: 
@@ -89459,32 +89460,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3391e96c014a90540946fff814f3572c, type: 3}
---- !u!1 &2109673920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3143563231055655434, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
-  m_PrefabInstance: {fileID: 1156076378}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &2109673923
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109673920}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7.6279387, y: 9.97305, z: 9.978791}
-  m_Center: {x: 0.12527333, y: 0.2994046, z: 0.30627444}
 --- !u!1001 &2110750276
 PrefabInstance:
   m_ObjectHideFlags: 0
