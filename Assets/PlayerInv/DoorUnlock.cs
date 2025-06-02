@@ -11,11 +11,18 @@ public class DoorUnlock : MonoBehaviour, IInteractable
     public bool requireAllKeys = true;
 
     public GameObject videoOverlay;        // 🔁 RawImage GameObject (disabled by default)
-    public VideoPlayer videoPlayer;        // 🔁 Assign the VideoPlayer component
+    public VideoPlayer videoPlayer;  // 🔁 Assign the VideoPlayer component
+   
+    public GameObject exitVideoPrompt;      // The "Press ESC to exit" UI
+    private bool isVideoPlaying = false;
+
 
     public Text lockedMessageText;
     public float messageDisplayTime = 2f;
     private bool isMessageShowing = false;
+
+
+
 
     public void Interact(PlayerInventory playerInventory)
     {
