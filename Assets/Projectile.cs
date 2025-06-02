@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public AudioClip boltSound;
     private Rigidbody rb;
     private SoundEmitter m_SoundEmitter;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -13,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         m_SoundEmitter = GetComponent<SoundEmitter>();
     }
 
@@ -31,7 +34,8 @@ public class Projectile : MonoBehaviour
         {
             m_SoundEmitter.EmitSound();
         }
-        //play audio file here
+
+        audioSource.PlayOneShot(boltSound);
     }
 
 }
