@@ -25,7 +25,7 @@ After a violent storm knocks you unconscious, you awaken to find the crew gone ‚
 - `W`, `A`, `S`, `D`: Move  
 - Mouse: Look around  
 - `E`: Interact / Pick up / Throw *(Note: interaction may not always register due to known issues)*
-
+- Note Controller support works for movement and jumping only at this point in time. Future update will support
 ---
 
 ## üêû Known Issues
