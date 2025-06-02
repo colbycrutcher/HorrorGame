@@ -14,7 +14,7 @@ After a violent storm knocks you unconscious, you awaken to find the crew gone �
 
 ## 🚀 How to Run the Game
 
-1. Locate the **Windows executable file** (e.g., `StaticTide.exe`) in the game folder.
+1. Locate the **Windows executable file** (e.g., `StaticTide.exe`) or **Mac .app File** in the game folder.
 2. Double-click the `.exe` file to launch the game.
 3. No installation is required — just run and play!
 
