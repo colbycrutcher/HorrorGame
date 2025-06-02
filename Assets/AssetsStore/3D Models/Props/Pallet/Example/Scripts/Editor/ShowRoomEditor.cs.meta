@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cedd31c79fc66854f99658bdf3f8a0aa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66603
+  packageName: Pallet
+  packageVersion: 1.1.1
+  assetPath: Assets/3D Models/Props/Pallet/Example/Scripts/Editor/ShowRoomEditor.cs
+  uploadId: 741183

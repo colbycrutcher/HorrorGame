@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 67024530d0f03f843858e7a4f566afc4
+timeCreated: 1517842070
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122461
+  packageName: Plastic Barrels
+  packageVersion: 1.0.2
+  assetPath: Assets/Props/Barrels/PlasticBarrels/Scene/MouseOrbit_PlasticBarrels.cs
+  uploadId: 732743

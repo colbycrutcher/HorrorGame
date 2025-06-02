@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a023028c5285ccf44a3656864cbfdd86
+timeCreated: 1471694343
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66603
+  packageName: Pallet
+  packageVersion: 1.1.1
+  assetPath: Assets/3D Models/Props/Pallet/Prefabs/Pallet_02.prefab
+  uploadId: 741183

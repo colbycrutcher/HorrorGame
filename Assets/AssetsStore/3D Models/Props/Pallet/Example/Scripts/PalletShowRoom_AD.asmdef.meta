@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c35782403a702d744850ebe63db252a9
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66603
+  packageName: Pallet
+  packageVersion: 1.1.1
+  assetPath: Assets/3D Models/Props/Pallet/Example/Scripts/PalletShowRoom_AD.asmdef
+  uploadId: 741183

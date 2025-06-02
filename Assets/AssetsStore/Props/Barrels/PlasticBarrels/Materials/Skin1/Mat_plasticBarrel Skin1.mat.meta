@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1aac95385db9d4840bf97e709f30d362
+timeCreated: 1530734307
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 122461
+  packageName: Plastic Barrels
+  packageVersion: 1.0.2
+  assetPath: Assets/Props/Barrels/PlasticBarrels/Materials/Skin1/Mat_plasticBarrel
+    Skin1.mat
+  uploadId: 732743
