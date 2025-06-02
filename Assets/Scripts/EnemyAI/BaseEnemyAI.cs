@@ -167,7 +167,7 @@ public class BaseEnemyAI : MonoBehaviour
                 // aiAnim.SetTrigger("Idle");
                 if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
 
-                Debug.Log("AI caught player. Returning to idle.");
+                StartCoroutine(nameof(DeathRoutine));
                 yield break;
             }
 
