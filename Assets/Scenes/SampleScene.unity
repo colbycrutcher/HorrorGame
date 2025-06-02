@@ -49855,6 +49855,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7722055213500143937, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
+      propertyPath: deathScene
+      value: DeathScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722055213500143937, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
+      propertyPath: catchDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722055213500143937, guid: d96111b2cf760044fae093b1c5f81a6e, type: 3}
       propertyPath: destinationAmount
       value: 5
       objectReference: {fileID: 0}
