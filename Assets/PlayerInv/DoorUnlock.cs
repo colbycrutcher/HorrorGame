@@ -1,36 +1,56 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI; // or TMPro
 
 public class DoorUnlock : MonoBehaviour, IInteractable
 {
     public AudioClip unlockSound;
-    public GameObject doorObject; // Optional: assign specific part of the door
+    public AudioClip lockedSound;            // 🔊 locked sound
+    public GameObject doorObject;
     public bool requireAllKeys = true;
+
+    public Text lockedMessageText;           // 🧾 assign this in inspector
+    public float messageDisplayTime = 2f;    // ⏱ duration message stays
+
+    private bool isMessageShowing = false;
 
     public void Interact(PlayerInventory playerInventory)
     {
-        if (playerInventory == null)
-        {
-            Debug.LogWarning("No player inventory!");
-            return;
-        }
+        if (playerInventory == null) return;
 
         if (requireAllKeys && playerInventory.HasAllKeys())
         {
-            Debug.Log("Unlocked door!");
-
             if (unlockSound != null)
                 AudioSource.PlayClipAtPoint(unlockSound, transform.position);
 
             if (doorObject != null)
-                Destroy(doorObject); // remove the door mesh
+                Destroy(doorObject);
             else
-                Destroy(gameObject); // or remove whole door
-
+                Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Door locked. You need all 3 keys.");
+            // 🔊 Play locked sound
+            if (lockedSound != null)
+                AudioSource.PlayClipAtPoint(lockedSound, transform.position);
+
+            // 🧾 Show UI message
+            if (!isMessageShowing && lockedMessageText != null)
+                ShowLockedMessage("The door is locked.");
         }
+    }
+
+    void ShowLockedMessage(string message)
+    {
+        isMessageShowing = true;
+        lockedMessageText.text = message;
+        lockedMessageText.gameObject.SetActive(true);
+        Invoke(nameof(HideLockedMessage), messageDisplayTime);
+    }
+
+    void HideLockedMessage()
+    {
+        lockedMessageText.gameObject.SetActive(false);
+        isMessageShowing = false;
     }
 
     public string GetPromptText()
