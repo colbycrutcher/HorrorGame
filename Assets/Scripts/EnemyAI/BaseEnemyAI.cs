@@ -4,6 +4,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 
 // used as reference material, huge thanks to Omogonix for the core logic
@@ -17,7 +18,7 @@ public class BaseEnemyAI : MonoBehaviour
     public NavMeshAgent ai;
     public List<Transform> destinations;
     public Animator aiAnim;
-    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance;
+    public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, catchDistance, jumpScareTime;
     public bool walking, chasing, listening;
     public Transform player;
     private Transform currentDestination;
@@ -25,6 +26,7 @@ public class BaseEnemyAI : MonoBehaviour
     private int randNum, randNum2;
     public int destinationAmount;
     private Coroutine activeRoutine;
+    public string deathScene;
 
     //Enum for Animation states
     private enum AIAnimState { Idle = 0, Walk = 1, Chase = 2, Listen = 3 }
@@ -190,10 +192,11 @@ public class BaseEnemyAI : MonoBehaviour
     //}
 
     // The game over routine when a player can no longer escape
-    //private IEnumerator DeathRoutine()
-    //{
-    //    TODO write death routine
-    //}
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(jumpScareTime);
+        SceneManager.LoadScene(deathScene);
+    }
 
     // The routine where the enemy listens for and searches for the player
     //private IEnumerator SearchRoutine()
