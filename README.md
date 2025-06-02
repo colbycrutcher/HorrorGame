@@ -10,31 +10,33 @@ After a violent storm knocks you unconscious, you awaken to find the crew gone a
 
 ## 🚀 How to Run the Game
 
-1. Open the project in Unity (developed in Unity 2022 or compatible version).
-2. Load the main scene from the `Scenes/` directory.
-3. Press the **Play** button to start the game.
+1. Locate the **Windows executable file** (e.g., `StaticTide.exe`) in the game's root directory.
+2. Double-click the executable to launch the game.
+3. Enjoy the experience!
+
+> ⚠️ No installation required — simply run the `.exe` file.
 
 ---
 
 ## 🕹️ Controls
 
-- `W`, `A`, `S`, `D`: Move player
-- Mouse: Look around
-- `Left Click`: Interact / Pick up / Throw (note: may not register 100% of the time)
+- `W`, `A`, `S`, `D`: Move player  
+- Mouse: Look around  
+- `Left Click`: Interact / Pick up / Throw *(Note: interaction may not register 100% of the time)*
 
 ---
 
-## 🐞 Known Bugs
+## 🐞 Known Issues
 
-- Some objects can be walked through. This was left intentionally to prevent the monster from getting stuck.
+- Some objects can be walked through. This was intentional to avoid the monster getting stuck.
 - The throw system may occasionally fail to register input properly.
 
 ---
 
 ## 👥 Credits
 
-- Props and environmental assets: **Unity Asset Store**
-- Monster design and animation: **Developed by the game team**
+- Environment and props: **Unity Asset Store**
+- Monster model and animations: **Created by the development team**
 
 ---
 
