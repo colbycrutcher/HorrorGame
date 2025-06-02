@@ -26,6 +26,10 @@ public class BaseEnemyAI : MonoBehaviour
     public int destinationAmount;
     private Coroutine activeRoutine;
 
+    //Enum for Animation states
+    private enum AIAnimState { Idle = 0, Walk = 1, Chase = 2, Listen = 3 }
+
+
     private void Start()
     {
         walking = true;
@@ -44,6 +48,7 @@ public class BaseEnemyAI : MonoBehaviour
             ai.isStopped = true;
             // TODO Add animation triggers back in
             // aiAnim.SetTrigger("Idle");
+            if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
         }
 
         //if (searching)
@@ -81,10 +86,12 @@ public class BaseEnemyAI : MonoBehaviour
                 if (randNum2 == 1)
                 {
                     // TODO Add these in when animations are set
-                    
+
                     // aiAnim.ResetTrigger("Walk");
                     // aiAnim.SetTrigger("Idle");
-                    
+                    if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
+                    if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Walk);
+
                     ai.isStopped = true;
                     StopCoroutine(nameof(StayIdle));
                     StartCoroutine(nameof(StayIdle));
@@ -102,11 +109,14 @@ public class BaseEnemyAI : MonoBehaviour
         walking = true;
         randNum = Random.Range(0, destinationAmount);
         currentDestination = destinations[randNum];
-        
+
         // TODO Add animation triggers back in
         // aiAnim.ResetTrigger("Idle");
         // aiAnim.SetTrigger("Walk");
-        
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Idle);
+
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Walk);
+
         ai.isStopped = false;
     }
 
@@ -124,6 +134,7 @@ public class BaseEnemyAI : MonoBehaviour
 
         // TODO Add animation triggers back in
         // aiAnim.SetTrigger("Chase");
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
 
         Debug.Log("AI started chasing towards " + lastHeardPosition);
 
@@ -152,6 +163,8 @@ public class BaseEnemyAI : MonoBehaviour
                 ai.isStopped = true;
                 // TODO Add animation triggers back in
                 // aiAnim.SetTrigger("Idle");
+                if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
+
                 Debug.Log("AI caught player. Returning to idle.");
                 yield break;
             }
@@ -201,6 +214,7 @@ public class BaseEnemyAI : MonoBehaviour
 
         // TODO Add animation triggers back in
         // aiAnim.SetTrigger("Listen");
+        if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Listen);
 
         Vector3 initialHeardPosition = lastHeardPosition;
         bool noiseConfirmed = false;
