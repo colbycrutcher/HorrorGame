@@ -166,7 +166,7 @@ public class BaseEnemyAI : MonoBehaviour
                 // TODO Add animation triggers back in
                 // aiAnim.SetTrigger("Idle");
                 if (aiAnim) aiAnim.SetInteger("State", (int)AIAnimState.Chase);
-
+                Debug.Log("You have Been caught");
                 StartCoroutine(nameof(DeathRoutine));
                 yield break;
             }
