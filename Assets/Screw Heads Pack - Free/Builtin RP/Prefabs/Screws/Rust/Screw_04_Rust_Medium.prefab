@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8852170575242409178}
   - component: {fileID: 6138292801292684044}
   - component: {fileID: 6308032770982537636}
+  - component: {fileID: 6435632972907209462}
   - component: {fileID: 7860310575074737468}
   m_Layer: 0
   m_Name: Screw_04_Rust_Medium
@@ -151,6 +152,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boltSound: {fileID: 8300000, guid: 4a4a3342822137f499b01b9581e2e982, type: 3}
+--- !u!114 &6435632972907209462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312860517606149155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27951fd730e39a342ab181909dcdc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseNoiseRadius: 5
+  maxNoiseRadius: 15
+  radiusDecayRate: 2
+  noiseCooldown: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  intensityMultiplier: 1
+  randomRadiusVariation: 0.2
+  showGizmos: 1
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &7860310575074737468
 AudioSource:
   m_ObjectHideFlags: 0

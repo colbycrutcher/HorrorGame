@@ -32,6 +32,7 @@ public class Projectile : MonoBehaviour
         Debug.Log("Hit: " + other.gameObject.name);
         if (m_SoundEmitter != null)
         {
+            Debug.Log("Bolt Sound Emitted");
             m_SoundEmitter.EmitSound();
         }
 
